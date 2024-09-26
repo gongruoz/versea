@@ -7,28 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F607BA72CA2CD4C00F9AEF4 /* InitialSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F607BA62CA2CD4C00F9AEF4 /* InitialSentence.swift */; };
 		3FA074912C9737BE002376FB /* VerseaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074902C9737BE002376FB /* VerseaApp.swift */; };
-		3FA074932C9737BE002376FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074922C9737BE002376FB /* ContentView.swift */; };
 		3FA074952C9737BF002376FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FA074942C9737BF002376FB /* Assets.xcassets */; };
 		3FA074982C9737BF002376FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FA074972C9737BF002376FB /* Preview Assets.xcassets */; };
 		3FA0749F2C973993002376FB /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0749E2C973992002376FB /* BlockView.swift */; };
-		3FA074A12C9739CD002376FB /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074A02C9739CD002376FB /* CanvasViewController.swift */; };
+		3FA074A12C9739CD002376FB /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074A02C9739CD002376FB /* CanvasView.swift */; };
 		3FA074A32C9739F9002376FB /* LLMAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074A22C9739F9002376FB /* LLMAPIManager.swift */; };
-		3FA074A52C973A15002376FB /* UpdateBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074A42C973A15002376FB /* UpdateBlockContent.swift */; };
-		3FA074A72C973E9B002376FB /* CanvasViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA074A62C973E9B002376FB /* CanvasViewControllerWrapper.swift */; };
+		3FD8A06E2C9C73D8009DB421 /* GridGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD8A06D2C9C73D8009DB421 /* GridGenerator.swift */; };
+		3FD8A0722C9C9C29009DB421 /* PixelifySans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD8A0712C9C9C29009DB421 /* PixelifySans-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F607BA62CA2CD4C00F9AEF4 /* InitialSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSentence.swift; sourceTree = "<group>"; };
 		3FA0748D2C9737BE002376FB /* Versea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Versea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA074902C9737BE002376FB /* VerseaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseaApp.swift; sourceTree = "<group>"; };
-		3FA074922C9737BE002376FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3FA074942C9737BF002376FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FA074972C9737BF002376FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3FA0749E2C973992002376FB /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
-		3FA074A02C9739CD002376FB /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
+		3FA074A02C9739CD002376FB /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		3FA074A22C9739F9002376FB /* LLMAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMAPIManager.swift; sourceTree = "<group>"; };
-		3FA074A42C973A15002376FB /* UpdateBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBlockContent.swift; sourceTree = "<group>"; };
-		3FA074A62C973E9B002376FB /* CanvasViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewControllerWrapper.swift; sourceTree = "<group>"; };
+		3FD8A06D2C9C73D8009DB421 /* GridGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridGenerator.swift; sourceTree = "<group>"; };
+		3FD8A06F2C9C97E3009DB421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3FD8A0712C9C9C29009DB421 /* PixelifySans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PixelifySans-VariableFont_wght.ttf"; path = "Versea/Preview Content/Preview Assets.xcassets/PixelifySans-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +62,14 @@
 		3FA0748F2C9737BE002376FB /* Versea */ = {
 			isa = PBXGroup;
 			children = (
+				3FD8A06F2C9C97E3009DB421 /* Info.plist */,
 				3FA074902C9737BE002376FB /* VerseaApp.swift */,
-				3FA074922C9737BE002376FB /* ContentView.swift */,
 				3FA0749E2C973992002376FB /* BlockView.swift */,
-				3FA074A02C9739CD002376FB /* CanvasViewController.swift */,
-				3FA074A62C973E9B002376FB /* CanvasViewControllerWrapper.swift */,
+				3FA074A02C9739CD002376FB /* CanvasView.swift */,
+				3F607BA62CA2CD4C00F9AEF4 /* InitialSentence.swift */,
+				3FD8A06D2C9C73D8009DB421 /* GridGenerator.swift */,
 				3FA074A22C9739F9002376FB /* LLMAPIManager.swift */,
-				3FA074A42C973A15002376FB /* UpdateBlockContent.swift */,
-				3FA074942C9737BF002376FB /* Assets.xcassets */,
+				3FD8A0702C9C9BDD009DB421 /* Assets */,
 				3FA074962C9737BF002376FB /* Preview Content */,
 			);
 			path = Versea;
@@ -80,6 +81,15 @@
 				3FA074972C9737BF002376FB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3FD8A0702C9C9BDD009DB421 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3FD8A0712C9C9C29009DB421 /* PixelifySans-VariableFont_wght.ttf */,
+				3FA074942C9737BF002376FB /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +152,7 @@
 			files = (
 				3FA074982C9737BF002376FB /* Preview Assets.xcassets in Resources */,
 				3FA074952C9737BF002376FB /* Assets.xcassets in Resources */,
+				3FD8A0722C9C9C29009DB421 /* PixelifySans-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,13 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FA074A52C973A15002376FB /* UpdateBlockContent.swift in Sources */,
-				3FA074A72C973E9B002376FB /* CanvasViewControllerWrapper.swift in Sources */,
-				3FA074A12C9739CD002376FB /* CanvasViewController.swift in Sources */,
-				3FA074932C9737BE002376FB /* ContentView.swift in Sources */,
+				3FA074A12C9739CD002376FB /* CanvasView.swift in Sources */,
 				3FA0749F2C973993002376FB /* BlockView.swift in Sources */,
+				3FD8A06E2C9C73D8009DB421 /* GridGenerator.swift in Sources */,
 				3FA074A32C9739F9002376FB /* LLMAPIManager.swift in Sources */,
 				3FA074912C9737BE002376FB /* VerseaApp.swift in Sources */,
+				3F607BA72CA2CD4C00F9AEF4 /* InitialSentence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +305,7 @@
 				DEVELOPMENT_TEAM = WV3KTAW42N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Versea/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +335,7 @@
 				DEVELOPMENT_TEAM = WV3KTAW42N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Versea/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
