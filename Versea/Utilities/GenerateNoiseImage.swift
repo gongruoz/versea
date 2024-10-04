@@ -16,7 +16,7 @@ import CoreImage.CIFilterBuiltins
         let filter = CIFilter.randomGenerator()
 
         if let noiseImage = filter.outputImage?.cropped(to: CGRect(x: 0, y: 0, width: 200, height: 200)) {
-            let whitenVector = CIVector(x: 0, y: 0, z: 0, w: 0)
+            let whitenVector = CIVector(x: 0, y: 1, z: 0, w: 0)
             let fineGrain = CIVector(x: 0, y: 0.06, z: 0, w: 0)
             let zeroVector = CIVector(x: 0, y: 0, z: 0, w: 0)
             let whiteningFilter = CIFilter.colorMatrix()

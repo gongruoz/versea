@@ -51,35 +51,14 @@ struct GridModel {
         return grid
     }
     
-    
     mutating func regenerate() {
         self.sentence = Self.initialSentence()
         self.grid = Self.generate8x4Grid(from: sentence)
+        
     }
     
     static func initialSentence() -> String {
         let questions = [
-            //        "WHAT REMAINS WHEN ALL I CLING TO DISAPPEARS",
-            //        "WHO AM I BENEATH THE STORIES I TELL MYSELF",
-            //        "HOW DOES SILENCE SHAPE THE MEANING OF MY WORDS",
-            //        "WHAT WOULD I SEEK IF FEAR NO LONGER HELD SWAY",
-            //        "WHERE DOES MY PATH LEAD WHEN I STOP SEARCHING",
-            //        "HOW DO I DEFINE FREEDOM WHEN NOTHING BINDS ME",
-            //        "WHAT TRUTH DO I AVOID IN THE COMFORT OF HABIT",
-            //        "DOES TIME CHANGE WHEN I CEASE TO MEASURE IT",
-            //        "DO YOU HEAR THE SOUND OF TIME"
-            
-//            "OVERHEARD THE ALBATROSS",
-//            "HANGS MOTIONLESS UPON THE AIR",
-//            "AND DEEP BENEATH THE ROLLING WAVES",
-//            "IN LABYRINTHS OF CORAL CAVES",
-//            "THE ECHO OF A DISTANT TIME",
-//            "COMES WILLOWING ACROSS THE SAND",
-//            "AND EVERYTHING IS GREEN AND SUBMARINE",
-//            "AND NO ONE SHOWED US TO THE LAND",
-//            "AND NO ONE KNOWS THE WHERES OR WHYS",
-//            "BUT SOMETHING STIRS AND SOMETHING TRIES",
-//            "AND STARTS TO CLIMB TOWARDS THE LIGHT"
             
             "WE ARE THE TIME WE ARE THE FAMOUS",
             "METAPHOR FROM HERACLITUS THE OBSCURE",
@@ -96,9 +75,14 @@ struct GridModel {
             "MEMORY DOES NOT STAMP HIS OWN COIN",
             "HOWEVER THERE IS SOMETHING THAT STAYS",
             "HOWEVER THERE IS SOMETHING THAT BEMOANS"
+            
         ]
         
         return questions.randomElement() ?? ""
     }
     
+    mutating func updateWord(at row: Int, col: Int, with newWord: String) {
+        guard row < grid.count && col < grid[row].count else { return }
+        grid[row][col] = newWord
+    }
 }
