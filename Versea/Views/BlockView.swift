@@ -23,7 +23,7 @@ struct BlockView: View {
     var body: some View {
         ZStack {
             backgroundColor  // 使用背景颜色
-                .opacity(0.85)
+                .opacity(0.75)
             
             // 添加噪音颗粒效果
             if let noiseImage = generateNoiseImage() {

@@ -18,59 +18,53 @@ struct CanvasView: View {
     
     @StateObject private var viewModel = CanvasViewModel()
     @State private var colors: [[Color]] = []  // 添加 colors 数组来管理每个 BlockView 的颜色
+    @State private var scrollOffset: CGPoint = .zero  // 用于跟踪滚动位置
+
+    let gridSize = CGSize(width: 4, height: 8)  // 定义基本网格的大小
+    // 环形滚动时用于复制的次数（为了达到环形效果，创建 5 倍大小的网格）
+    let multiplier = 5
     
     var body: some View {
         GeometryReader { geometry in
-            let blockWidth = (geometry.size.width + 15) / 4  // Block width for 4 columns
-            let blockHeight = geometry.size.height / 8 // Block height for 8 rows
+            let blockWidth = (geometry.size.width+10) / CGFloat(gridSize.width)
+            let blockHeight = geometry.size.height / CGFloat(gridSize.height)
             
-            ZStack {
-                Color("FFFEE3")  // Set background color to FFFEE3
-                    .edgesIgnoringSafeArea(.all)
+            ScrollView([.horizontal, .vertical]) {
                 
-                
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 0) {
-                    ForEach(0..<viewModel.grid.count, id: \.self) { row in
-                        ForEach(0..<viewModel.grid[row].count, id: \.self) { col in
-                            
-                            let uniqueID = row * viewModel.grid[row].count + col  // 基于 row 和 col 生成唯一 ID
-                            
-                            let color = colors[safe: row]?[safe: col] ?? .randomCustomColor()
-                            
-                            BlockView(word: $viewModel.grid[row][col], backgroundColor: color).id(uniqueID) // 使用自定义的唯一 ID
-                                .frame(width: blockWidth, height: blockHeight)
-                        }
-                    }
+                ZStack {
+                    Color("FFFEE3")  // Set background color to FFFEE3
+                        .edgesIgnoringSafeArea(.all)
                     
-                }
-            }.onAppear {    initializeColors()  }
-        }
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 4),
+                              spacing: 0) {
+                        ForEach(0..<viewModel.grid.count, id: \.self) { row in
+                            ForEach(0..<viewModel.grid[row].count, id: \.self) { col in
+                                
+                                let uniqueID = row * viewModel.grid[row].count + col  // 基于 row 和 col 生成唯一 ID
+                                
+                                let color = colors[safe: row]?[safe: col] ?? .randomCustomColor()
+                                
+                                BlockView(word: $viewModel.grid[row][col], backgroundColor: color).id(uniqueID) // 使用自定义的唯一 ID
+                                    .frame(width: blockWidth, height: blockHeight)
+                            }
+                        }
+                        
+                    }
+                }.onAppear {    initializeColors()  } // zstack
+            } // scroll view
+        } // geometry reader view
         .onShake {
             initializeColors()
             viewModel.regenerateGrid()
         }
-    }
+    } // body view
     
     private func initializeColors() {
         colors = Array(repeating: Array(repeating: Color.randomCustomColor(), count: 4), count: 8)
-        print("colors initialized")
+        
     }
-    
-//    private func initializeColors() {
-//            let numRows = viewModel.grid.count
-//            let numCols = viewModel.grid.first?.count ?? 0
-//
-//            // 初始化二维 colors 数组，并为每个位置分配不同的随机颜色
-//            colors = Array(repeating: Array(repeating: Color.clear, count: numCols), count: numRows)
-//            
-//            for row in 0..<numRows {
-//                for col in 0..<numCols {
-//                    colors[row][col] = Color.randomCustomColor()
-//                }
-//            }
-//        }
-//
-}
+} // canvas view
 
 // 安全访问二维数组元素的扩展
 extension Array {
@@ -78,6 +72,9 @@ extension Array {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+
+
 
 
 
