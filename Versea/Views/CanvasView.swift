@@ -14,15 +14,13 @@ import Foundation
 struct CanvasView: View {
     @StateObject private var viewModel = CanvasViewModel(multiplier: 3)
     @State private var colors: [[Color]] = []  // 添加 colors 数组来管理每个 BlockView 的颜色
-    @State private var scrollOffset: CGPoint = .zero  // 用于跟踪滚动位置
-    
-    let gridSize = CGSize(width: 4, height: 8)  // 定义基本网格的大小
-    // 环形滚动时用于复制的次数（为了达到环形效果，创建 5 倍大小的网格）
-    
     @State private var translation: CGSize = .zero  // 跟踪滑动的偏移量
     @State private var isVerticalDrag: Bool? = nil  // 是否是垂直方向滑动
     @State private var contentOffset: CGSize = .zero  // 跟踪内容的总偏移量
     @State private var initialContentOffset: CGSize = .zero  // 记录滑动开始时的偏移量
+    
+    let gridSize = CGSize(width: 4, height: 8)  // 定义基本网格的大小
+    // 环形滚动时用于复制的次数（为了达到环形效果，创建 5 倍大小的网格）
 
     var body: some View {
         GeometryReader { geometry in
@@ -51,13 +49,12 @@ struct CanvasView: View {
                             }
                         }
                     } // lazyvgrid
-                    
                 }.frame(width: geometry.size.width * CGFloat(viewModel.multiplier), height: geometry.size.height * CGFloat(viewModel.multiplier))
                     .onAppear {    initializeColors()  } // zstack
             } // scroll view
-            .offset(x: contentOffset.width + (isVerticalDrag == true ? 0 : translation.width),  // 只在水平滑动时更新 x 轴偏移量
-                                    y: contentOffset.height + (isVerticalDrag == false ? 0 : translation.height))  // 只在垂直滑动时更新 y 轴偏移量
-                            
+            .offset(x: contentOffset.width + (isVerticalDrag == true ? 0 : translation.width), y: contentOffset.height + (isVerticalDrag == false ? 0 : translation.height))
+            // 只在垂直滑动时更新 y 轴偏移量
+//            .offset(x: contentOffset.width, y: contentOffset.height)  // 控制画布位置
             .gesture(
                                 DragGesture()
                                     .onChanged { value in
@@ -71,6 +68,9 @@ struct CanvasView: View {
                                                     self.translation = CGSize(width: value.translation.width, height: 0)
                                                     self.contentOffset.width = self.initialContentOffset.width + value.translation.width
                                                 }
+                                        // 检测是否需要进行边界重置
+                                                resetContentOffsetIfNeeded(geometrySize: geometry.size, blockWidth: blockWidth, blockHeight: blockHeight)
+                                                            
                                             }
                                     .onEnded { value in
                                                                 // 自动对齐到最近的网格边缘
@@ -94,10 +94,51 @@ struct CanvasView: View {
         }
     } // body view
     
+    
+    
+    /// 检测内容偏移量是否需要进行环形重置，并重置到相对位置
+    private func resetContentOffsetIfNeeded(geometrySize: CGSize, blockWidth: CGFloat, blockHeight: CGFloat) {
+        let contentWidth = geometrySize.width * CGFloat(viewModel.multiplier)
+        let contentHeight = geometrySize.height * CGFloat(viewModel.multiplier)
+        
+        print("Current contentOffset: \(contentOffset)")
+        print("Content width: \(contentWidth), Content height: \(contentHeight)")
+
+        // 检测水平偏移是否超出左边界或右边界
+        if contentOffset.width > contentWidth / 2 {
+            // 如果超出右边界，则将偏移量重置到最左边
+            print("right")
+            contentOffset.width = -contentWidth / 2 + blockWidth
+        } else if contentOffset.width < -contentWidth / 2 {
+            // 如果超出左边界，则将偏移量重置到最右边
+            print("left")
+            contentOffset.width = contentWidth / 2 - blockWidth
+        }
+
+        // 检测垂直偏移是否超出上边界或下边界
+        if contentOffset.height > contentHeight / 2 {
+            // 如果超出下边界，则将偏移量重置到最上边
+            print("too low")
+            contentOffset.height = -contentHeight / 2 + blockHeight
+        } else if contentOffset.height < -contentHeight / 2 {
+            // 如果超出上边界，则将偏移量重置到最下边
+            print("too high")
+            contentOffset.height = contentHeight / 2 - blockHeight
+        }
+    }
+    
+    
     private func initializeColors() {
         colors = Array(repeating: Array(repeating: Color.randomCustomColor(), count: 4), count: 8)
     }
+    
 } // canvas view
+
+
+
+
+
+
 
 // 安全访问二维数组元素的扩展
 extension Array {
