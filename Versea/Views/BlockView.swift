@@ -49,6 +49,4 @@ struct BlockView: View {
             self.backgroundColor = newColor  // 更新背景颜色
         }
     }
-    
-    
 }
