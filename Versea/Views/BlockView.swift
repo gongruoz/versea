@@ -41,12 +41,12 @@ struct BlockView: View {
                 .bold()
         }
         .clipped()
-        .onTapGesture {
+//        .onTapGesture {
             // 当点击时，生成新的内容
             //            let newWord = generateRelatedWord(basedOn: word)  // 新的单词
-            let newColor = Color.randomCustomColor()  // 新的随机颜色
+//            let newColor = Color.randomCustomColor()  // 新的随机颜色
             //            self.word = newWord  // 更新绑定的单词
-            self.backgroundColor = newColor  // 更新背景颜色
-        }
+//            self.backgroundColor = newColor  // 更新背景颜色
+//        }
     }
 }

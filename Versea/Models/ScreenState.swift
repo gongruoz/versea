@@ -5,6 +5,7 @@
 //  Created by Hazel Gong on 2024/10/10.
 //
 
+import SwiftUI
 import Foundation
 
 // Step 2: Implement the ScreenState class
@@ -26,7 +27,11 @@ class ScreenState: ObservableObject {
             for x in 0..<4 {                                     // 4 columns
                 let blockID = BlockID(screenIndex: screenID.x, blockIndex: (x + y * 4))
                 let position = (x: x, y: y)
-                blocks[blockID] = Block(id: blockID, position: position)  // Create empty blocks
+                // Use your custom random color generation function
+                let randomColor = Color.randomCustomColor()
+                                
+                blocks[blockID] = Block(id: blockID, position: position, backgroundColor: randomColor)
+                            
             }
         }
     }
