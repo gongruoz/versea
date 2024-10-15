@@ -60,11 +60,6 @@ class ScreenState: ObservableObject {
         let capturedBlocks = blocks.values.filter { $0.isCaptured }.count
         self.occupancyRate = Double(capturedBlocks) / Double(totalBlocks)
     }
-
-    // Step 2.5: Debugging method to print the current state of all blocks
-    func printAllBlocks() {
-        for (_, block) in blocks {
-            print(block)
-        }
-    }
+    
+    
 }
